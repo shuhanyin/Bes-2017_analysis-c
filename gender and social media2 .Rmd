@@ -29,4 +29,36 @@ plot(pressure)
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot. 
 
+ bes_2017 <- read_csv('/Users/ysh/Desktop/besanalysis/bes-2017-analysis data2/gender and social media2/BES-2017-f2f-gender-fb-tw (2).csv')
 
+# Gender and Facebook use
+There is a stereotype that women are more sociable than men. Therefore we expect women to be more likely than men to have Facebook accounts.
+
+H1 Gender is associated with Facebook use
+(H0 Gender is not associated with Facebook use
+
+```{r visualisation}
+bes_2017 %>%
+  ggplot(aes(x = Gender, fill = Use_Facebook)) +
+  geom_bar(position = 'dodge')
+```
+chisq.test(
+  x = bes_2017$Gender,
+  y = bes_2017$Use_Facebook
+)
+# Gender and Twitter use
+bes_2017 %>%
++     ggplot(aes(x = Gender, fill = Use_Twitter)) +
++     geom_bar(position = 'dodge')
+> 
+> chisq.test(
++     x = bes_2017$Gender,
++     y = bes_2017$Use_Twitter
++ )
+
+	Pearson's Chi-squared test with Yates' continuity correction
+
+data:  bes_2017$Gender and bes_2017$Use_Twitter
+X-squared = 0.70466, df = 1, p-value = 0.4012
+
+  
